@@ -1,0 +1,13 @@
+[package]
+name = "shared_config"
+version = "0.1.0"
+authors = ["Dennis Pettersson"]
+edition = "2018"
+
+
+[dependencies]
+lazy_static = "1.4.0"
+config = "0.10.1"
+rocket = "0.4.2"
+serde = "1.0.104"
+serde_derive = "1.0.104"

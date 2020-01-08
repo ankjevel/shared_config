@@ -1,0 +1,6 @@
+{
+  "debug": true,
+  "rocket": {
+    "address": "0.0.0.0"
+  }
+}
