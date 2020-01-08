@@ -24,6 +24,7 @@ pub struct Rocket {
     pub workers: u16,
     pub keep_alive: Option<u32>,
     pub log_level: String,
+    pub secret_key: Option<String>,
 }
 
 impl Rocket {
@@ -42,6 +43,7 @@ impl Rocket {
             port: default.port as u16,
             workers: default.workers as u16,
             keep_alive,
+            secret_key: None,
             log_level: match default.log_level {
                 LoggingLevel::Critical => "critical",
                 LoggingLevel::Normal => "normal",
@@ -73,6 +75,11 @@ impl Rocket {
         if let Some(keep_alive) = self.keep_alive {
             config
                 .set_default(&prefix("keep_alive"), keep_alive as i64)
+                .unwrap();
+        }
+        if let Some(secret_key) = &self.secret_key {
+            config
+                .set_default(&prefix("secret_key"), secret_key.to_string())
                 .unwrap();
         }
     }
